@@ -27,5 +27,22 @@ class DetailViewController: UIViewController {
         nameLabel.text = creature.name.capitalized
         heightLabel.text = ""
         weightLabel.text = ""
+        
+        var creatureDetails = CreatureDetails()
+        creatureDetails.urlString = creature.url
+        creatureDetails.getData {
+            DispatchQueue.main.async {
+                self.heightLabel.text = "\(creatureDetails.height)"
+                self.weightLabel.text = "\(creatureDetails.weight)"
+                
+                guard let url = URL(string: creatureDetails.imageURL) else {return}
+                do {
+                    let data = try Data(contentsOf: url)
+                    self.imageView.image = UIImage(data: data)
+                } catch {
+                    print("😡 ERROR: Could not get image from url \(url), \(error.localizedDescription)")
+                }
+            }
+        }
     }
 }
