@@ -10,5 +10,4 @@ import Foundation
 struct  Creature: Codable {
     var name: String
     var url: String?
-    var results: [Creature]
 }

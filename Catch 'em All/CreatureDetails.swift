@@ -45,9 +45,9 @@ class CreatureDetails {
             //deal w/ data
             do {
                 let returned = try JSONDecoder().decode(Returned.self, from: data!)
-                self.height.returned.height
-                self.weight.returned.weight
-                self.imageURL.returned.sprites.front_default ?? ""
+                self.height = returned.height
+                self.weight = returned.weight
+                self.imageURL = returned.sprites.front_default ?? ""
 //                print("😎 Here is what was returned: \(returned)")
             } catch {
                 print("😡 JSON ERROR: \(error.localizedDescription)")
