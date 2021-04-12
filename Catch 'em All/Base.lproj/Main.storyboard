@@ -54,6 +54,11 @@
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="7Gp-Mb-TlL">
                         <barButtonItem key="backBarButtonItem" title="Back" id="QBn-Rw-W7v"/>
+                        <barButtonItem key="leftBarButtonItem" title="Load All" id="3Qq-Ip-Qn1">
+                            <connections>
+                                <action selector="loadAllPressed:" destination="BYZ-38-t0r" id="DMj-Gy-hTe"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="iah-gC-i2t" id="oB6-N3-j7Z"/>

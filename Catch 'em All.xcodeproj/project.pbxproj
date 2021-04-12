@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7593F9E22624F11F00DFB29A /* UIVeiwController+activityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7593F9E12624F11F00DFB29A /* UIVeiwController+activityIndicator.swift */; };
 		75CF5D54261BACFB0093F526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF5D53261BACFB0093F526 /* AppDelegate.swift */; };
 		75CF5D56261BACFB0093F526 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF5D55261BACFB0093F526 /* SceneDelegate.swift */; };
 		75CF5D58261BACFB0093F526 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF5D57261BACFB0093F526 /* ListViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7593F9E12624F11F00DFB29A /* UIVeiwController+activityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVeiwController+activityIndicator.swift"; sourceTree = "<group>"; };
 		75CF5D50261BACFB0093F526 /* Catch 'em All.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Catch 'em All.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75CF5D53261BACFB0093F526 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75CF5D55261BACFB0093F526 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				75CF5D57261BACFB0093F526 /* ListViewController.swift */,
 				75CF5D74261BC1F20093F526 /* DetailViewController.swift */,
 				75CF5D59261BACFC0093F526 /* Main.storyboard */,
+				7593F9E12624F11F00DFB29A /* UIVeiwController+activityIndicator.swift */,
 				75CF5D5C261BACFF0093F526 /* Assets.xcassets */,
 				75CF5D5E261BACFF0093F526 /* LaunchScreen.storyboard */,
 				75CF5D61261BACFF0093F526 /* Info.plist */,
@@ -154,6 +157,7 @@
 				75CF5D78261BC20E0093F526 /* Creature.swift in Sources */,
 				75CF5D75261BC1F20093F526 /* DetailViewController.swift in Sources */,
 				75CF5D81261BC8A00093F526 /* CreatureDetails.swift in Sources */,
+				7593F9E22624F11F00DFB29A /* UIVeiwController+activityIndicator.swift in Sources */,
 				75CF5D54261BACFB0093F526 /* AppDelegate.swift in Sources */,
 				75CF5D56261BACFB0093F526 /* SceneDelegate.swift in Sources */,
 			);

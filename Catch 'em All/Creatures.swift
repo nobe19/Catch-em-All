@@ -18,8 +18,15 @@ class Creatures {
     var urlString = "https://pokeapi.co/api/v2/pokemon/"
     var count = 0
     var creatureArray: [Creature] = []
+    var isFetching = false
     
     func getData(completed: @escaping () -> ()) {
+        guard isFetching == false else {
+            print("*** Didn't call getData here, bc we hadn't fetched data")
+            return
+        }
+        isFetching = true
+        
         print("🕸 We are accessing the URL, \(urlString)")
         
         //create a URL
@@ -48,6 +55,7 @@ class Creatures {
             } catch {
                 print("😡 JSON ERROR: \(error.localizedDescription)")
             }
+            self.isFetching = false
             completed()
         }
         task.resume()

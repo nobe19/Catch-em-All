@@ -13,6 +13,7 @@ class ListViewController: UIViewController {
     //    var creatures = ["Bulbasaur", "Pikachu", "Snorlax", "Wigglypuff", "Charmander"]
     
     var creatures: Creatures!
+    var loadAllCallCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,12 +21,8 @@ class ListViewController: UIViewController {
         tableView.dataSource = self
         
         creatures = Creatures()
-        creatures.getData {
-            DispatchQueue.main.async {
-                self.navigationItem.title = "Returned \(self.creatures.creatureArray.count) of \(self.creatures.count)"
-                self.tableView.reloadData()
-            }
-        }
+        self.showIndicator(onView: self.view)
+        loadData(loadAll: false)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -34,6 +31,30 @@ class ListViewController: UIViewController {
             let selectedIndexPath = tableView.indexPathForSelectedRow!
             destination.creature = creatures.creatureArray[selectedIndexPath.row]
         }
+    }
+    
+    func loadData(loadAll: Bool) {
+        loadAllCallCount += 1
+        print("***loadAllCallCount = \(loadAllCallCount)")
+        if creatures.urlString.hasPrefix("http") {
+            creatures.getData {
+                DispatchQueue.main.async {
+                    self.navigationItem.title = "Returned \(self.creatures.creatureArray.count) of \(self.creatures.count)"
+                    self.tableView.reloadData()
+                    if loadAll {
+                        self.loadData(loadAll: loadAll)
+                    } else {
+                        self.removeIndicator()
+                    }
+                }
+            }
+        } else {
+            self.removeIndicator()
+        }
+    }
+    
+    @IBAction func loadAllPressed(_ sender: UIBarButtonItem) {
+        loadData(loadAll: true)
     }
 }
 
@@ -44,7 +65,12 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "\(indexPath.row + 1). \(creatures.creatureArray[indexPath.row].name)"
+        print("indexPath.row = \(indexPath.row) creatures.creatureArray.count-1 = \(creatures.creatureArray.count-1)")
+        cell.textLabel?.text = "\(indexPath.row + 1). \(creatures.creatureArray[indexPath.row].name.capitalized)"
+        if (indexPath.row == creatures.creatureArray.count - 1) && (creatures.urlString.hasPrefix("http")) {
+            self.showIndicator(onView: self.view)
+            loadData(loadAll: false)
+        }
         return cell
     }
 }

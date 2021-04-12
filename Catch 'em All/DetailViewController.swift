@@ -29,7 +29,7 @@ class DetailViewController: UIViewController {
         weightLabel.text = ""
         
         var creatureDetails = CreatureDetails()
-        creatureDetails.urlString = creature.url
+        creatureDetails.urlString = creature.url ?? ""
         creatureDetails.getData { 
             DispatchQueue.main.async {
                 self.heightLabel.text = "\(creatureDetails.height)"
